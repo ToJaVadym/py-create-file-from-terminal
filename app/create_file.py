@@ -8,8 +8,11 @@ dirs = []
 
 if "-d" in sys.argv:
     d_index = sys.argv.index("-d")
-    f_index = sys.argv.index("-f") if "-f" in sys.argv else len(sys.argv)
-    dirs = sys.argv[d_index + 1 : f_index]
+    dirs = []
+    for arg in sys.argv[d_index + 1:]:
+        if arg.startswith("-"):
+            break
+        dirs.append(arg)
 
 if "-f" in sys.argv:
     f_index = sys.argv.index("-f")
